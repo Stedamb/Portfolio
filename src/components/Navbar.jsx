@@ -20,7 +20,7 @@ const Navbar = () => {
                 <Link
                     to=''
                     className='flex items-center gap-2'
-                    onclick={() => {
+                    onClick={() => {
                     setActive("");
                     window.scrollTo(0, 0);
                 }}>
@@ -55,7 +55,7 @@ const Navbar = () => {
                     <div
                         className={`${ !toggle
                         ? "hidden"
-                        : "flex"} p-6 border-solid border-2 border-sky-500 absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}>
+                        : "flex"} p-6 bg-black border-solid border-2 border-sky-500 absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}>
                         <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
                             {navLinks.map((nav) => (
                                 <li
