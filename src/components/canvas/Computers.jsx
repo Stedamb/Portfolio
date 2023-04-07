@@ -18,7 +18,7 @@ const Computers = () => {
     });
 
     return (
-        <mesh ref={mesh}>
+        <mesh ref={mesh} position={[0, -0.4, 0]}>
             <hemisphereLight intensity={0.25} groundColor='black'/>
             <spotLight
                 position={[-20, 50, 10]}
@@ -28,8 +28,9 @@ const Computers = () => {
                 castShadow
                 shadow-mapSize={1024}/>
             <pointLight intensity={1}/>
-            <torusGeometry />
+            <torusGeometry position={[1,1,1]}/>
             <meshStandardMaterial color='orange' wireframe />
+            position={[100,1,1]}
             {/* <primitive
                 object={computer.scene}
                 scale={0.75}

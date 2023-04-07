@@ -49,21 +49,50 @@
   background: -webkit-linear-gradient(-90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
 }
 
-.orange-text-gradient {
-  background: #f12711; /* fallback for old browsers */
+/* .orange-text-gradient {
+    --bg-size: 400%;
+  background: #f12711;
   background: -webkit-linear-gradient(
     to top,
     #f12711,
     #f5af19
-  ); /* Chrome 10-25, Safari 5.1-6 */
+  ); 
   background: linear-gradient(
     to top,
     #f12711,
     #f5af19
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  ); 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
+} */
+
+.orange-text-gradient {
+    --bg-size: 400%;
+    --color-one: hsl(15 90% 55%);
+    --color-two: hsl(40 95% 55%);
+    background: linear-gradient(
+        90deg,
+        var(--color-one),
+        var(--color-two),
+        var(--color-one)
+      )
+      0 0 / var(--bg-size) 100%;
+    color: transparent;
+    background-clip: text;
+    /* text-shadow: 2px 2px 2px #d66b00; */
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .orange-text-gradient {
+      animation: move-bg 10s linear infinite;
+    }
+    @keyframes move-bg {
+      to {
+        background-position: var(--bg-size) 0;
+      }
+    }
+  }
+  
 
 .green-text-gradient {
   background: #11998e; /* fallback for old browsers */
