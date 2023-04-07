@@ -8,13 +8,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Consolas", monospace;
+  font-family: "Space Grotesk", sans-serif;
   scroll-behavior: smooth;
   color-scheme: dark;
 }
 
 .space-grotesk { 
     font-family: 'Space Grotesk', sans-serif;
+}
+.poppins { 
+    font-family: 'Poppins', sans-serif;
 }
 
 .hash-span {
