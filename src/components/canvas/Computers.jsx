@@ -18,7 +18,7 @@ const Computers = () => {
     });
 
     return (
-        <mesh ref={mesh} position={[0, -0.4, 0]}>
+        <mesh ref={mesh} position={[0, -0.6, 0]}>
             <hemisphereLight intensity={0.25} groundColor='black'/>
             <spotLight
                 position={[-20, 50, 10]}
