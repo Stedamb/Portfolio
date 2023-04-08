@@ -19,15 +19,16 @@ const ServiceCard = ({ index, title, icon }) => (
           scale: 1,
           speed: 450,
         }}
-        className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
+        className='bg-gif rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
       >
-        <img
+        {/* <div className='h-[150px]'></div> */}
+        {/* <img
           src={icon}
           alt='web-development'
           className='w-16 h-16 object-contain'
-        />
+        /> */}
 
-        <h3 className='text-white text-[20px] font-bold text-center'>
+        <h3 className='text-white text-[24px] font-bold text-center'>
           {title}
         </h3>
       </div>
@@ -54,7 +55,7 @@ const About = () => {
         real-world problems. Let's work together to bring your ideas to life!
       </motion.p>
 
-      <div className='mt-20 flex flex-wrap gap-20 justify-center'>
+      <div className='mt-20 flex flex-wrap gap-10 justify-center'>
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}

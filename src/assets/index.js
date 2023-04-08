@@ -31,6 +31,13 @@ import cleared from "./cleared.png";
 import dalenin from "./dalenin.png";
 import tripguide from "./tripguide.png";
 
+import gif from "./gif1.gif";
+
+import facebook from "./facebook.svg";
+import instagram from "./instagram.svg";
+import linkedin from "./linkedin.svg";
+import twitter from "./twitter.svg";
+
 export {
   logo,
   backend,
@@ -59,5 +66,10 @@ export {
   starbucks,
   tesla,
   cleared,
-  dalenin
+  dalenin,
+  gif,
+  facebook,
+  instagram,
+  linkedin,
+  twitter,
 };
