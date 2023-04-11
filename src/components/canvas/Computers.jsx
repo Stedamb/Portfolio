@@ -1,11 +1,10 @@
 import React, {Suspense, useEffect, useState, useRef} from "react";
 import {Canvas, useFrame} from "@react-three/fiber";
-import {OrbitControls, Preload, useGLTF} from "@react-three/drei";
+import {OrbitControls, Preload} from "@react-three/drei";
 
 import CanvasLoader from "../Loader";
 
-const Computers = ({isMobile}) => {
-    // const computer = useGLTF('./desktop_pc/scene.gltf');
+const Torus = () => {
     const mesh = useRef();
 
     useFrame(() => {
@@ -19,139 +18,79 @@ const Computers = ({isMobile}) => {
 
     return (
         <mesh ref={mesh} position={[0, -0.6, 0]}>
-            <hemisphereLight intensity={0.25} groundColor='black'/>
-            <spotLight
-                position={[-20, 50, 10]}
-                angle={0.12}
-                penumbra={1}
-                intensity={1}
-                castShadow
-                shadow-mapSize={1024}/>
-            <pointLight intensity={1}/>
-            <torusGeometry position={[1, 1, 1]}/>
+            <torusGeometry/>
             <meshStandardMaterial color='orange' wireframe/>
-            <torusGeometry position={[2, 3, 1]}/>
-            <meshStandardMaterial color='orange' wireframe/> {/* position={[100, 1, 1]} */}
-            {/* <primitive
-                object={computer.scene}
-                scale={0.75}
-                position={[0, -3.25, -1.5]}
-            rotation={[-0.01, -0.2, -0.1]}/> */}
-            {/* <mesh>
-                    <boxGeometry args={[2,2,2]}/>
-                    <meshStandardMaterial color='white' wireframe />
-                </mesh> */}
         </mesh>
     )
 }
 
-const Shape = ({isMobile}) => {
-    const mesh = useRef();
-
-    useFrame(() => {
-        if (!mesh.current) {
-            return;
-        }
-
-        mesh.current.rotation.x += 0.01;
-        mesh.current.rotation.y += 0.003;
-    });
-
-    return (
-        <mesh ref={mesh} position={[-0.9, -1.7, -4]} scale={0.4}>
-            <hemisphereLight intensity={0.25} groundColor='black'/>
-            <spotLight
-                position={[-20, 50, 10]}
-                angle={0.12}
-                penumbra={1}
-                intensity={1}
-                castShadow
-                shadow-mapSize={1024}/>
-            <pointLight intensity={1}/>
-            <capsuleGeometry args={[1, 1, 2]} position={[1, 1, 1]}/>
-            <meshStandardMaterial color='#A3333D' wireframe/> {/* position={[100, 1, 1]} */}
-            {/* <primitive
-                object={computer.scene}
-                scale={0.75}
-                position={[0, -3.25, -1.5]}
-            rotation={[-0.01, -0.2, -0.1]}/> */}
-            {/* <mesh>
-                    <boxGeometry args={[2,2,2]}/>
-                    <meshStandardMaterial color='white' wireframe />
-                </mesh> */}
-        </mesh>
-    )
-}
-
-const Shape2 = ({isMobile}) => {
-    const mesh = useRef();
-
-    useFrame(() => {
-        if (!mesh.current) {
-            return;
-        }
-
-        mesh.current.rotation.x += 0.01;
-        mesh.current.rotation.y += 0.01;
-    });
-
-    return (
-        <mesh ref={mesh} position={[0, 0.6, -4]} scale={0.1}>
-            <hemisphereLight intensity={0.25} groundColor='black'/>
-            <spotLight
-                position={[-20, 50, 10]}
-                angle={0.12}
-                penumbra={1}
-                intensity={1}
-                castShadow
-                shadow-mapSize={1024}/>
-            <pointLight intensity={1}/>
-            <coneGeometry args={[4, 8, 32]} position={[1, 1, 1]}/>
-            <meshStandardMaterial color='#A06CD5' wireframe opacity/> {/* position={[100, 1, 1]} */}
-            {/* <primitive
-                object={computer.scene}
-                scale={0.75}
-                position={[0, -3.25, -1.5]}
-            rotation={[-0.01, -0.2, -0.1]}/> */}
-            {/* <mesh>
-                    <boxGeometry args={[2,2,2]}/>
-                    <meshStandardMaterial color='white' wireframe />
-                </mesh> */}
-        </mesh>
-    )
-}
-
-const Shape3 = ({isMobile}) => {
-    const mesh = useRef();
-
-    useFrame(() => {
-        if (!mesh.current) {
-            return;
-        }
-
-        mesh.current.rotation.x += 0.001;
-        mesh.current.rotation.y += 0.005;
-    });
-
-    return (
-        <mesh ref={mesh} position={[-7, 0.2, 1.5]}>
-            <sphereGeometry position={[1, 1, 1]}/>
-            <meshStandardMaterial color='#477998' wireframe/> {/* position={[100, 1, 1]} */}
-            {/* <primitive
-                object={computer.scene}
-                scale={0.75}
-                position={[0, -3.25, -1.5]}
-            rotation={[-0.01, -0.2, -0.1]}/> */}
-            {/* <mesh>
-                    <boxGeometry args={[2,2,2]}/>
-                    <meshStandardMaterial color='white' wireframe />
-                </mesh> */}
-        </mesh>
-    )
-}
-const Shape4 = ({isMobile}) => {
+const Capsule = ({isMobile}) => {
     if (!isMobile) {
+        const mesh = useRef();
 
+        useFrame(() => {
+            if (!mesh.current) {
+                return;
+            }
+
+            mesh.current.rotation.x += 0.01;
+            mesh.current.rotation.y += 0.003;
+        });
+
+        return (
+            <mesh ref={mesh} position={[-0.9, -1.7, -4]} scale={0.4}>
+                <capsuleGeometry args={[1, 1, 2]} position={[1, 1, 1]}/>
+                <meshStandardMaterial color='#A3333D' wireframe/>
+            </mesh>
+        )
+    }
+}
+
+const Cone = ({isMobile}) => {
+    if (!isMobile) {
+        const mesh = useRef();
+
+        useFrame(() => {
+            if (!mesh.current) {
+                return;
+            }
+            mesh.current.rotation.x += 0.01;
+            mesh.current.rotation.y += 0.01;
+        });
+
+        return (
+            <mesh ref={mesh} position={[0, 0.6, -4]} scale={0.1}>
+                <coneGeometry args={[4, 8, 32]} position={[1, 1, 1]}/>
+                <meshStandardMaterial color='#A06CD5' wireframe opacity/>
+            </mesh>
+        )
+    }
+}
+
+const Sphere = ({isMobile}) => {
+    if (!isMobile) {
+        const mesh = useRef();
+
+        useFrame(() => {
+            if (!mesh.current) {
+                return;
+            }
+
+            mesh.current.rotation.x += 0.001;
+            mesh.current.rotation.y += 0.005;
+        });
+
+        return (
+            <mesh ref={mesh} position={[-7, 0.2, 1.5]}>
+                <sphereGeometry position={[1, 1, 1]}/>
+                <meshStandardMaterial color='#477998' wireframe/>
+            </mesh>
+        )
+    }
+}
+
+const Icosahedron = ({isMobile}) => {
+    if (!isMobile) {
         const mesh = useRef();
 
         useFrame(() => {
@@ -166,22 +105,12 @@ const Shape4 = ({isMobile}) => {
         return (
             <mesh ref={mesh} position={[-8, -2.6, 0]} scale={0.6}>
                 <icosahedronGeometry position={[1, 1, 1]}/>
-                <meshStandardMaterial color='#758E29' wireframe/> {/* position={[100, 1, 1]} */}
-                {/* <primitive
-                object={computer.scene}
-                scale={0.75}
-                position={[0, -3.25, -1.5]}
-            rotation={[-0.01, -0.2, -0.1]}/> */}
-                {/* <mesh>
-                    <boxGeometry args={[2,2,2]}/>
-                    <meshStandardMaterial color='white' wireframe />
-                </mesh> */}
+                <meshStandardMaterial color='#758E29' wireframe/>
             </mesh>
         )
     }
 }
-
-const Shape5 = ({isMobile}) => {
+const Lights = () => {
     const mesh = useRef();
 
     useFrame(() => {
@@ -194,20 +123,19 @@ const Shape5 = ({isMobile}) => {
     });
 
     return (
-        <mesh ref={mesh} position={[-7, 0.2, 1.5]}>
-            <tubeGeometry position={[1, 1, 1]}/>
-            <meshStandardMaterial color='#477998' wireframe/> {/* position={[100, 1, 1]} */}
-            {/* <primitive
-                object={computer.scene}
-                scale={0.75}
-                position={[0, -3.25, -1.5]}
-            rotation={[-0.01, -0.2, -0.1]}/> */}
-            {/* <mesh>
-                    <boxGeometry args={[2,2,2]}/>
-                    <meshStandardMaterial color='white' wireframe />
-                </mesh> */}
+        <mesh ref={mesh} position={[10, 0.6, 10]} scale={0.6}>
+            <hemisphereLight intensity={0.75} groundColor='black'/>
+            <spotLight
+                position={[20, 50, 10]}
+                angle={0.12}
+                penumbra={1}
+                intensity={0}
+                castShadow
+                shadow-mapSize={1024}/>
+            <pointLight intensity={2}/>
         </mesh>
     )
+
 }
 
 const ComputersCanvas = () => {
@@ -216,17 +144,8 @@ const ComputersCanvas = () => {
     const [isIdle,
         setIdle] = useState(false);
 
-    // var isWaiting = false;
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIdle(true);
-        }, 30000);
-    }, []);
-
-    // var isWaiting = false; useEffect(() => {     const timer = setTimeout(() => {
-    //         // setCount('true');         isWaiting = true;
-    // console.log('woww');     }, 1000);     return () => clearTimeout(timer); },
-    // []);
+    // useEffect(() => {     const timer = setTimeout(() => {         setIdle(true);
+    //     }, 30000); }, []);
 
     useEffect(() => {
         // Add a listener for changes to the screen size
@@ -250,22 +169,15 @@ const ComputersCanvas = () => {
     }, []);
 
     return (
-        <Canvas 
-        // onMouseMove={(ev) => {
-        //     setIdle(false);
-        //     useEffect(() => {
-        //         const timer = setTimeout(() => {
-        //             setIdle(true);
-        //         }, 10000);
-        //     }, []);
-        //     }}
-             // frameloop='demand'
-    shadows camera={{
+        <Canvas
+            shadows
+            camera={{
             position: [
                 10, 3, 5
             ],
             fov: 25
-        }} gl={{
+        }}
+            gl={{
             preserveDrawingBuffer: true
         }}>
             <Suspense fallback={< CanvasLoader />}>
@@ -274,11 +186,12 @@ const ComputersCanvas = () => {
                     enableZoom={false}
                     maxPolarAngle={Math.PI / 2}
                     minPolarAngle={Math.PI / 2}/>
-                <Computers isMobile={isMobile}/>
-                <Shape isMobile={isMobile}/>
-                <Shape2 isMobile={isMobile}/>
-                <Shape3 isMobile={isMobile}/>
-                <Shape4 isMobile={isMobile}/>
+                <Torus/>
+                <Capsule isMobile={isMobile}/>
+                <Cone isMobile={isMobile}/>
+                <Sphere isMobile={isMobile}/>
+                <Icosahedron isMobile={isMobile}/>
+                <Lights/>
             </Suspense>
 
             <Preload all/>

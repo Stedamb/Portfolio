@@ -5,7 +5,7 @@ import {slideIn} from "../utils/motion";
 
 import {styles} from "../styles";
 import {navLinks} from "../constants";
-import {logo, menu, close} from "../assets";
+import {logo} from "../assets";
 
 const Navbar = () => {
     const [active,
@@ -14,6 +14,10 @@ const Navbar = () => {
         setToggle] = useState(false);
     const [scrolled,
         setScrolled] = useState(false);
+    const variants = {
+        open: { opacity: 1, x: 0 },
+        closed: { opacity: 0, x: "20%" },
+        }
 
     const path01Variants = {
         open: {
@@ -37,18 +41,18 @@ const Navbar = () => {
     const path01Controls = useAnimation();
     const path02Controls = useAnimation();
 
-    const onClick = async () => {
+    const onClick = async() => {
         setToggle(!toggle);
         if (!toggle) {
-          await path02Controls.start(path02Variants.moving);
-          path01Controls.start(path01Variants.open);
-          path02Controls.start(path02Variants.open);
+            await path02Controls.start(path02Variants.moving);
+            path01Controls.start(path01Variants.open);
+            path02Controls.start(path02Variants.open);
         } else {
-          path01Controls.start(path01Variants.closed);
-          await path02Controls.start(path02Variants.moving);
-          path02Controls.start(path02Variants.closed);
+            path01Controls.start(path01Variants.closed);
+            await path02Controls.start(path02Variants.moving);
+            path02Controls.start(path02Variants.closed);
         }
-      };
+    };
 
     return (
         <nav
@@ -99,20 +103,17 @@ const Navbar = () => {
                                 stroke='#FFFFFF'/>
                         </svg>
                     </button>
-                    {/* <img
-                        src={toggle
-                        ? close
-                        : menu}
-                        alt='menu'
-                        className='w-[28px] h-[28px] object-contain'
-                        onClick={() => setToggle(!toggle)}/> */}
 
                     <motion.div
-                        variants={slideIn("left", "tween", 0.2, 1)}
+                        key="slideIn"
+                        animate={toggle ? "open" : "closed"}
+                        variants={variants}
+                        exit={{ opacity: 0, x: "20%" }}
+                        transition={{ duration: 0.5 }}
                         className={`${ !toggle
                         ? "hidden"
-                        : "flex"} p-6 transition backdrop-blur-xl border-solid border-2 border-orange-400 absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}>
-                        <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
+                        : "flex"} nav-menu-mobile p-6 backdrop-blur backdrop-brightness-50 absolute top-16 -right-48 mx-4 my-2 min-w-[420px] h-screen`}>
+                        <ul className='list-none flex flex-1 flex-col gap-4'>
                             {navLinks.map((nav) => (
                                 <li
                                     key={nav.id}
@@ -120,25 +121,27 @@ const Navbar = () => {
                                     ? "text-white"
                                     : "text-gray-200"}`}
                                     onClick={() => {
-                                        setToggle(!toggle);
-                                        if (!toggle) {
-                                          path02Controls.start(path02Variants.moving);
-                                          path01Controls.start(path01Variants.open);
-                                          path02Controls.start(path02Variants.open);
-                                        } else {
-                                          path01Controls.start(path01Variants.closed);
-                                          path02Controls.start(path02Variants.moving);
-                                          path02Controls.start(path02Variants.closed);
-                                        }
-                                        setActive(nav.title);
-                                    }}>
+                                    setToggle(!toggle);
+                                    if (!toggle) {
+                                        path02Controls.start(path02Variants.moving);
+                                        path01Controls.start(path01Variants.open);
+                                        path02Controls.start(path02Variants.open);
+                                    } else {
+                                        path01Controls.start(path01Variants.closed);
+                                        path02Controls.start(path02Variants.moving);
+                                        path02Controls.start(path02Variants.closed);
+                                    }
+                                    setActive(nav.title);
+                                }}>
                                     <a href={`#${nav.id}`}>{nav.title}</a>
                                 </li>
                             ))}
                         </ul>
+                        <span className="absolute bottom-0"></span>
                     </motion.div>
                 </div>
             </div>
+            <span className="absolute bottom-0 h-[10px] -right-20 w-screen bg-primary">&nbsp;</span>
         </nav>
     )
 }

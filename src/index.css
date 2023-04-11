@@ -146,6 +146,11 @@
     background-size: 100%;
 }
 
+.nav-menu-mobile {
+    border-left: orange solid;
+    /* backdrop-filter: brightness(10%); */
+}
+
 /* canvas- styles */
 .canvas-loader {
     font-size: 10px;
