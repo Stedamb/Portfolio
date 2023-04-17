@@ -39,7 +39,7 @@ const Capsule = ({isMobile}) => {
 
         return (
             <mesh ref={mesh} position={[-0.9, -1.7, -4]} scale={0.4}>
-                <capsuleGeometry args={[1, 1, 2]} position={[1, 1, 1]}/>
+                <capsuleBufferGeometry args={[1, 1, 2]} position={[1, 1, 1]}/>
                 <meshStandardMaterial color='#A3333D' wireframe/>
             </mesh>
         )
@@ -60,7 +60,7 @@ const Cone = ({isMobile}) => {
 
         return (
             <mesh ref={mesh} position={[0, 0.6, -4]} scale={0.1}>
-                <coneGeometry args={[4, 8, 32]} position={[1, 1, 1]}/>
+                <coneBufferGeometry args={[4, 8, 32]} position={[1, 1, 1]}/>
                 <meshStandardMaterial color='#A06CD5' wireframe opacity/>
             </mesh>
         )
@@ -82,7 +82,7 @@ const Sphere = ({isMobile}) => {
 
         return (
             <mesh ref={mesh} position={[-7, 0.2, 1.5]}>
-                <sphereGeometry position={[1, 1, 1]}/>
+                <sphereBufferGeometry />
                 <meshStandardMaterial color='#477998' wireframe/>
             </mesh>
         )
@@ -104,7 +104,7 @@ const Icosahedron = ({isMobile}) => {
 
         return (
             <mesh ref={mesh} position={[-8, -2.6, 0]} scale={0.6}>
-                <icosahedronGeometry position={[1, 1, 1]}/>
+                <icosahedronBufferGeometry position={[1, 1, 1]}/>
                 <meshStandardMaterial color='#758E29' wireframe/>
             </mesh>
         )
@@ -124,12 +124,12 @@ const Lights = () => {
 
     return (
         <mesh ref={mesh} position={[10, 0.6, 10]} scale={0.6}>
-            <hemisphereLight intensity={0.75} groundColor='black'/>
+            <hemisphereLight intensity={0.5} groundColor='black'/>
             <spotLight
                 position={[20, 50, 10]}
                 angle={0.12}
                 penumbra={1}
-                intensity={0}
+                intensity={1}
                 castShadow
                 shadow-mapSize={1024}/>
             <pointLight intensity={2}/>
@@ -138,14 +138,11 @@ const Lights = () => {
 
 }
 
-const ComputersCanvas = () => {
+const ShapesCanvas = () => {
     const [isMobile,
         setIsMobile] = useState(false);
     const [isIdle,
         setIdle] = useState(false);
-
-    // useEffect(() => {     const timer = setTimeout(() => {         setIdle(true);
-    //     }, 30000); }, []);
 
     useEffect(() => {
         // Add a listener for changes to the screen size
@@ -199,4 +196,4 @@ const ComputersCanvas = () => {
     );
 };
 
-export default ComputersCanvas;
+export default ShapesCanvas;

@@ -2,22 +2,29 @@ import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {motion, useAnimation} from "framer-motion";
 import {slideIn} from "../utils/motion";
+import {useTranslation, initReactI18next} from "react-i18next";
 
 import {styles} from "../styles";
 import {navLinks} from "../constants";
 import {logo} from "../assets";
 
 const Navbar = () => {
+    const {i18n, t} = useTranslation();
+
     const [active,
         setActive] = useState("");
     const [toggle,
         setToggle] = useState(false);
-    const [scrolled,
-        setScrolled] = useState(false);
     const variants = {
-        open: { opacity: 1, x: 0 },
-        closed: { opacity: 0, x: "20%" },
+        open: {
+            opacity: 1,
+            x: 0
+        },
+        closed: {
+            opacity: 0,
+            x: "20%"
         }
+    }
 
     const path01Variants = {
         open: {
@@ -71,18 +78,51 @@ const Navbar = () => {
                     </p>
                 </Link>
 
-                <ul className='list-none hidden sm:flex flex-row gap-10'>
-                    {navLinks.map((nav) => (
-                        <li
-                            key={nav.id}
-                            className={`${active === nav.title
-                            ? "text-white"
-                            : "text-secondary"} hover:text-white text-[18px] font-medium cursor-pointer`}
-                            onClick={() => setActive(nav.title)}>
-                            <a href={`#${nav.id}`}>{nav.title}</a>
-                        </li>
-                    ))}
-                </ul>
+                <div className="flex items-center gap-8">
+
+                    <ul className='list-none hidden sm:flex flex-row gap-10'>
+                        {navLinks.map((nav) => (
+                            <li
+                                key={nav.id}
+                                className={`${active === nav.title
+                                ? "text-white"
+                                : "text-secondary"} hover:text-white text-[18px] font-medium cursor-pointer`}
+                                onClick={() => setActive(nav.title)}>
+                                <a href={`#${nav.id}`}>{t(nav.id)}</a>
+                            </li>
+                        ))}
+                    </ul>
+                    <a
+                        className="text-[18px] font-medium cursor-pointer hidden sm:flex"
+                        onClick={() => {
+                        if (i18n.resolvedLanguage === 'en') {
+                            i18n.changeLanguage('it');
+                        } else {
+                            i18n.changeLanguage('en');
+                        }
+                    }}>
+                        <img
+                            className={i18n.resolvedLanguage === 'en'
+                            ? 'hidden'
+                            : 'flex'}
+                            src="https://flagcdn.com/28x21/gb.png"
+                            srcset="https://flagcdn.com/56x42/gb.png 2x,
+                        https://flagcdn.com/84x63/gb.png 3x"
+                            width="28"
+                            height="21"
+                            alt="United Kingdom"/>
+                        <img
+                            className={i18n.resolvedLanguage === 'it'
+                            ? 'hidden'
+                            : 'flex'}
+                            src="https://flagcdn.com/28x21/it.png"
+                            srcset="https://flagcdn.com/56x42/it.png 2x,
+                        https://flagcdn.com/84x63/it.png 3x"
+                            width="28"
+                            height="21"
+                            alt="Italy"/>
+                    </a>
+                </div>
 
                 <div className='sm:hidden flex flex-1 justify-end items-center'>
                     <button onClick={onClick}>
@@ -106,14 +146,21 @@ const Navbar = () => {
 
                     <motion.div
                         key="slideIn"
-                        animate={toggle ? "open" : "closed"}
+                        animate={toggle
+                        ? "open"
+                        : "closed"}
                         variants={variants}
-                        exit={{ opacity: 0, x: "20%" }}
-                        transition={{ duration: 0.5 }}
+                        exit={{
+                        opacity: 0,
+                        x: "20%"
+                    }}
+                        transition={{
+                        duration: 0.5
+                    }}
                         className={`${ !toggle
                         ? "hidden"
-                        : "flex"} nav-menu-mobile p-6 backdrop-blur backdrop-brightness-50 absolute top-16 -right-48 mx-4 my-2 min-w-[420px] h-screen`}>
-                        <ul className='list-none flex flex-1 flex-col gap-4'>
+                        : "flex-column"} nav-menu-mobile p-6 backdrop-blur backdrop-brightness-50 absolute top-16 -right-48 mx-4 my-2 min-w-[420px] h-screen`}>
+                        <ul className='list-none flex flex-1 flex-col gap-4 mb-5'>
                             {navLinks.map((nav) => (
                                 <li
                                     key={nav.id}
@@ -133,11 +180,39 @@ const Navbar = () => {
                                     }
                                     setActive(nav.title);
                                 }}>
-                                    <a href={`#${nav.id}`}>{nav.title}</a>
+                                    <a href={`#${nav.id}`}>{t(nav.id)}</a>
                                 </li>
                             ))}
                         </ul>
-                        <span className="absolute bottom-0"></span>
+                        <div className="flex gap-4">
+                            <a
+                                className="text-[18px] font-medium cursor-pointer sm:hidden"
+                                onClick={() => {
+                                i18n.changeLanguage('en');
+                            }}>
+                                <img
+                                    src="https://flagcdn.com/28x21/gb.png"
+                                    srcset="https://flagcdn.com/56x42/gb.png 2x,
+                        https://flagcdn.com/84x63/gb.png 3x"
+                                    width="28"
+                                    height="21"
+                                    alt="United Kingdom"/>
+                            </a>
+                            |
+                            <a
+                                className="text-[18px] font-medium cursor-pointer sm:hidden"
+                                onClick={() => {
+                                i18n.changeLanguage('it');
+                            }}>
+                                <img
+                                    src="https://flagcdn.com/28x21/it.png"
+                                    srcset="https://flagcdn.com/56x42/it.png 2x,
+                                    https://flagcdn.com/84x63/it.png 3x"
+                                    width="28"
+                                    height="21"
+                                    alt="Italy"/>
+                            </a>
+                        </div>
                     </motion.div>
                 </div>
             </div>
