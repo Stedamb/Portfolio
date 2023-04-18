@@ -8,7 +8,11 @@ import {
     facebook,
     instagram,
     linkedin,
-    twitter
+    twitter,
+    web,
+    android, 
+    blockchain,
+    camera
 } from "../assets";
 
 export const navLinks = [
@@ -26,17 +30,21 @@ export const navLinks = [
 
 const services = [
     {
+        id: "web",
         title: "Web Development",
-        icon: gif
+        icon: web
     }, {
+        id: "android",
         title: "Android Development",
-        icon: mobile
+        icon: android
     }, {
+        id: "blockchain",
         title: "Blockchain and Metaverse",
-        icon: backend
+        icon: blockchain
     }, {
+        id: "camera",
         title: "Photography and Design enthusiast",
-        icon: creator
+        icon: camera
     }
 ];
 

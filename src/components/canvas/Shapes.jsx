@@ -18,7 +18,7 @@ const Torus = () => {
 
     return (
         <mesh ref={mesh} position={[0, -0.6, 0]}>
-            <torusGeometry/>
+            <torusGeometry />
             <meshStandardMaterial color='orange' wireframe/>
         </mesh>
     )

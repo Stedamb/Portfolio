@@ -2,11 +2,15 @@ import logo from "./logo.svg";
 import backend from "./backend.png";
 import creator from "./creator.png";
 import mobile from "./mobile.png";
-import web from "./web.png";
 import github from "./github.png";
 import share from "./share.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
+
+import web from "./web.png";
+import android from "./android.png";
+import blockchain from "./blockchain.png";
+import camera from "./camera.png";
 
 import css from "./tech/css.png";
 import docker from "./tech/docker.png";
@@ -29,8 +33,6 @@ import tesla from "./company/tesla.png";
 
 import cleared from "./cleared.png";
 import dalenin from "./dalenin.png";
-import tripguide from "./tripguide.png";
-
 import gif from "./gif1.gif";
 
 import facebook from "./facebook.svg";
@@ -43,7 +45,6 @@ export {
   backend,
   creator,
   mobile,
-  web,
   github,
   share,
   menu,
@@ -72,4 +73,8 @@ export {
   instagram,
   linkedin,
   twitter,
+  web, 
+  android, 
+  blockchain,
+  camera
 };

@@ -3,23 +3,11 @@ import {initReactI18next} from 'react-i18next';
 
 import Backend from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
-// don't want to use this? have a look at the Quick start guide for passing in
-// lng and translations on init
 
 i18n
-// load translation using http -> see /public/locales (i.e.
-// https://github.com/i18next/react-i18next/tree/master/example/react/public/loca
-// les) learn more: https://github.com/i18next/i18next-http-backend want your
-// translations to be loaded from a professional CDN? =>
-// https://github.com/locize/react-tutorial#step-2---use-the-locize-cdn
     .use(Backend)
-// detect user language learn more:
-// https://github.com/i18next/i18next-browser-languageDetector
     .use(LanguageDetector)
-// pass the i18n instance to react-i18next.
     .use(initReactI18next)
-// init i18next for all options read:
-// https://www.i18next.com/overview/configuration-options
     .init({
     fallbackLng: 'en',
     debug: true,
@@ -38,7 +26,11 @@ i18n
                 contact: "Contact",
                 intro_subtitle: "INTRODUCTION",
                 intro_title: "Overview",
-                intro_text: "I'm a skilled software developer with experience in TypeScript and JavaScript, and expertise in frameworks like React, Node.js, and Three.js. I'm a quick learner and collaborate closely with clients to create efficient, scalable, and user-friendly solutions that solve real-world problems. Let's work together to bring your ideas to life!",
+                intro_text: "I am a full-stack developer based in Bellaria, Rimini. I have always been passionate about photography and videomaking, and I have brought my passion to the digital world, where I have combined my taste for art and design with the logic of programming, both graphically and functionally.",
+                web: "Web Development",
+                android: "Android Development", 
+                blockchain: "Blockchain and Metaverse", 
+                camera: "Photography and Videomaking",
 
             }
         },
@@ -51,7 +43,11 @@ i18n
                 contact: "Contatti",
                 intro_subtitle: "INTRODUZIONE",
                 intro_title: "Chi sono",
-                intro_text: "Sono un programmatore fullstack con esperienza in TypeScript e JavaScript, e esperto in frameworks come React, Node.js, e Three.js. Sono un apprendista e collaboro con clienti per creare efficienti, scalabili, e"
+                intro_text: "Sono un programmatore full-stack e vivo a Bellaria, Rimini. Da sempre appassionato alla fotografia e il videomaking, ho portato la mia passione nel digitale, dove ho unito il gusto per l'arte ed il design alla logica della programmazione, sia dal punto di vista grafico, che funzionale.",
+                web: "Sviluppo Web",
+                android: "Sviluppo Android", 
+                blockchain: "Blockchain e Metaverso", 
+                camera: "Fotografia e Videomaking",
             }
         }
     }
