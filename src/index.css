@@ -27,15 +27,26 @@
     display: block;
 }
 
+.bg-gradient { 
+    --bg-size: 400%;
+    --color-one: #302b63;
+    --color-two: #0f0c29;
+    background: linear-gradient(45deg,
+            var(--color-one),
+            var(--color-two),
+            var(--color-one)) 0 0 / var(--bg-size) 100%;
+
+}
+
 .black-gradient {
     background: #000000;
     /* fallback for old browsers */
     background: -webkit-linear-gradient(to right,
-            #434343,
+            #202020,
             #000000);
     /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right,
-            #434343,
+            #202020,
             #000000);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
@@ -75,6 +86,9 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
+    .bg-gradient {
+        animation: move-bg 30s linear infinite;
+    }
     .orange-text-gradient {
         animation: move-bg 10s linear infinite;
     }
