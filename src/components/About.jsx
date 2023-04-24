@@ -7,7 +7,7 @@ import { services } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
 
-const ServiceCard = ({ index, title, id, icon }) => (
+const ServiceCard = ({ index, title, icon }) => (
     
     <motion.div
       variants={fadeIn("right", "spring", index * 0.5, 1)}
@@ -50,7 +50,7 @@ const About = () => {
       >{t('intro_text')}
       </motion.p>
 
-      <div className='mt-20 flex flex-wrap gap-10 justify-center'>
+      <div className='mt-10 flex flex-wrap gap-10 justify-center'>
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} title={t(service.id)} icon={service.icon}/>
         ))}

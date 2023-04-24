@@ -12,7 +12,8 @@ import {
     web,
     android, 
     blockchain,
-    camera
+    camera,
+    github
 } from "../assets";
 
 export const navLinks = [
@@ -51,8 +52,7 @@ const services = [
 const projects = [
     {
         name: "Cleared to Play",
-        description: "Custom looking blog for a content creator in the dj and electronic music ambient" +
-                ". Also contains a custom map to see all the upcoming parties.",
+        description: "cleared",
         tags: [
             {
                 name: "html",
@@ -69,9 +69,7 @@ const projects = [
         source_code_link: "http://clearedtoplay.it"
     }, {
         name: "Da Lenin Barber Shop",
-        description: "Static website for a local barber shop, with some photos I shoot myself. It feat" +
-                "ures a call button on the main screen, and some other pages where you can see th" +
-                "e prices and the bio of the owner.",
+        description: "dalenin",
         tags: [
             {
                 name: "html",
@@ -91,7 +89,6 @@ const projects = [
 
 const footerLinks = [
     {
-        title: "Useful Links",
         links: [
             {
                 name: "Content",
@@ -115,21 +112,17 @@ const footerLinks = [
 
 const socialMedia = [
     {
-        id: "social-media-1",
-        icon: instagram,
-        link: "https://www.instagram.com/"
+        id: "github",
+        icon: github,
+        link: "https://github.com/Stedamb"
     }, {
-        id: "social-media-2",
-        icon: facebook,
-        link: "https://www.facebook.com/"
-    }, {
-        id: "social-media-3",
+        id: "twitter",
         icon: twitter,
-        link: "https://www.twitter.com/"
+        link: "https://twitter.com/ste_dambrosio_"
     }, {
-        id: "social-media-4",
+        id: "linkedin",
         icon: linkedin,
-        link: "https://www.linkedin.com/"
+        link: "https://www.linkedin.com/in/ste-damb/"
     }
 ];
 

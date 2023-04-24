@@ -1,6 +1,7 @@
 import React from "react";
-import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+
 
 import { styles } from "../styles";
 import { share } from "../assets";
@@ -63,11 +64,13 @@ const ProjectCard = ({
 };
 
 const Works = () => {
+    const { i18n, t } = useTranslation();
+
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} `}>My work</p>
-        <h2 className={`${styles.sectionHeadText}`}>Projects</h2>
+        <p className={`${styles.sectionSubText} `}>{t("work_subtitle")}</p>
+        <h2 className={`${styles.sectionHeadText}`}>{t("work_title")}</h2>
       </motion.div>
 
       <div className='w-full flex'>
@@ -75,17 +78,13 @@ const Works = () => {
           variants={fadeIn("", "", 0.1, 1)}
           className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px] poppins'
         >
-          Following projects showcases my skills and experience through
-          real-world examples of my work. Each project is briefly described with
-          links to code repositories and live demos in it. It reflects my
-          ability to solve complex problems, work with different technologies,
-          and manage projects effectively.
+          {t("work_text")} <a style={{color: 'white'}} href='https://github.com/Stedamb'>Github</a>.
         </motion.p>
       </div>
 
-      <div className='mt-20 flex flex-wrap gap-7'>
-        {projects.map((project, index) => (
-          <ProjectCard key={`project-${index}`} index={index} {...project} />
+      <div className='mt-10 flex flex-wrap gap-7'>
+        {projects.map((projects, index) => (
+          <ProjectCard key={`project-${index}`} index={index} description={t(projects.description)}  name={projects.name} tags={projects.tags} image={projects.image} source_code_link={projects.source_code_link}  />
         ))}
       </div>
     </>
