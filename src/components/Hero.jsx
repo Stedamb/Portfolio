@@ -1,5 +1,3 @@
-import {motion} from 'framer-motion';
-
 import {styles} from '../styles';
 import {ShapesCanvas} from './canvas';
 
@@ -14,12 +12,11 @@ const Hero = () => {
                 className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}>
 
                 <div>
-                    <h1 className={`${styles.heroHeadText} text-white space-grotesk`}>
-                        {t('title')}
-                        <span className='orange-text-gradient space-grotesk font-bold'>Stefano</span>
+                    <h1 className={`${styles.heroHeadText}`}>
+                        Stefano <span className="orange-text-gradient">D'Ambrosio</span>
                     </h1>
-                    <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-                        Full-stack developer with a <span className='orange-text-gradient italic font-bold'>creative</span> mind
+                    <p className={`${styles.heroSubText} mt-2`}>
+                        {t("subtitle")}<span className='orange-text-gradient font-bold'>{t("subtitle_highlighted")}</span>
                     </p>
                 </div>
             </div>

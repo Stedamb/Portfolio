@@ -20,8 +20,8 @@ i18n
         en: {
             translation: {
                 // hero
-                title: "Hi there, I'm ",
-                subtitle: "Full-stack developer with a creative mind",
+                subtitle: "Front-end developer with a ",
+                subtitle_highlighted: "creative mind",
                 // navbar
                 about: "About",
                 work: "Work",
@@ -58,8 +58,8 @@ i18n
         it: {
             translation: {
                 // hero
-                title: "Ciao, sono ",
-                subtitle: "Programmatore fullstack con una mente creativa",
+                subtitle: "Sviluppatore front-end con una ",
+                subtitle_highlighted: "mente creativa",
                 // navbar
                 about: "Su di me",
                 work: "Lavoro",
